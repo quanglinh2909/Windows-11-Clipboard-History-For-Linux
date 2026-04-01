@@ -1,17 +1,5 @@
 # Windows 11 Clipboard History For Linux
 
-Clipboard manager cho Linux với giao diện kiểu Windows 11 (Tauri + Rust + React).
-
-## Cài đặt nhanh (package)
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/gustavosett/Windows-11-Clipboard-History-For-Linux/master/scripts/install.sh | bash
-```
-
-> Cách này phù hợp khi bạn dùng bản phát hành chính thức.
-
----
-
 ## Cài từ source (khuyến nghị khi vừa sửa code)
 
 Nếu bạn vừa sửa source (đặc biệt các fix hotkey/Win+V), hãy build và cài local để đảm bảo app chạy đúng theo code mới nhất trên máy bạn.
