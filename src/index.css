@@ -1,0 +1,180 @@
+@import 'tailwindcss';
+@config "../tailwind.config.js";
+
+/* Base styles */
+:root {
+  font-family:
+    'Segoe UI Variable',
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* CSS Custom Properties for dynamic background opacity */
+  /* These values represent the actual alpha channel (0.0 = transparent, 1.0 = opaque) */
+  --win11-dark-bg-alpha-start: 0.7;
+  --win11-dark-bg-alpha-end: 0.67;
+
+  /* Light mode opacity values */
+  --win11-light-bg-alpha-start: 0.7;
+  --win11-light-bg-alpha-end: 0.65;
+}
+
+/* Reset for Tauri */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Transparent background for Tauri window */
+body {
+  background: transparent;
+}
+
+/* Make the app draggable from certain areas */
+[data-tauri-drag-region] {
+  -webkit-app-region: drag;
+}
+
+/* Allow interaction with elements inside drag regions */
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* Disable text selection */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Custom scrollbar for Windows 11 style */
+@layer components {
+  .scrollbar-win11 {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+
+    scrollbar-gutter: stable;
+    isolation: isolate;
+  }
+
+  .scrollbar-win11::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-win11::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-win11::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+
+  .scrollbar-win11::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  :root.dark .scrollbar-win11 {
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  :root.dark .scrollbar-win11::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  :root.dark .scrollbar-win11::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Glassmorphism / Acrylic effect */
+@layer components {
+  .glass-effect {
+    background: linear-gradient(
+      135deg,
+      rgba(40, 40, 40, var(--win11-dark-bg-alpha-start, 0.7)) 0%,
+      rgba(40, 40, 40, var(--win11-dark-bg-alpha-end, 0.67)) 100%
+    );
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.25),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-effect-light {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, var(--win11-light-bg-alpha-start, 0.7)) 0%,
+      rgba(255, 255, 255, var(--win11-light-bg-alpha-end, 0.65)) 100%
+    );
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.15),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+
+  /*
+   * Solid-background fallback for NVIDIA / AppImage environments where
+   * transparency causes rendering artefacts.  Applied automatically when
+   * the rendering-env hook forces opacity CSS vars to 1.0.
+   */
+  .rounded-none .glass-effect,
+  .glass-effect.no-transparency {
+    background: rgb(40, 40, 40);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  .rounded-none .glass-effect-light,
+  .glass-effect-light.no-transparency {
+    background: rgb(255, 255, 255);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Focus styles for accessibility */
+@layer components {
+  .focus-ring {
+    @apply outline-none ring-2 ring-win11-bg-accent ring-offset-2 ring-offset-transparent;
+  }
+}
+
+/* Hide native number input spinners for better cross-browser styling */
+/* Utility class: apply to inputs to remove native spinner controls */
+.no-number-spinner::-webkit-outer-spin-button,
+.no-number-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.no-number-spinner {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Small numeric input consistent with other controls */
+.input-number-compact {
+  padding: 0.45rem 0.6rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+}

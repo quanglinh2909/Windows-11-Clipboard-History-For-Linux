@@ -1,0 +1,9 @@
+# udev rules for Windows 11 Clipboard History
+# Allows non-root access to uinput for keyboard simulation (paste)
+
+# Load module automatically
+ACTION=="add", SUBSYSTEM=="misc", KERNEL=="uinput", OPTIONS+="static_node=uinput"
+
+# Give access to the logged-in user in the active session (systemd)
+# GROUP="input" is a fallback for systems without systemd
+KERNEL=="uinput", SUBSYSTEM=="misc", MODE="0660", GROUP="input", TAG+="uaccess"

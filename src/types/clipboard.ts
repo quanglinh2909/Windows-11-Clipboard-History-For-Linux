@@ -1,0 +1,95 @@
+/** Clipboard content types */
+export type ClipboardContentType = 'text' | 'RichText' | 'image'
+
+/** Text content */
+export interface TextContent {
+  type: 'Text'
+  data: string
+}
+
+/** Rich text content with HTML formatting */
+export interface RichTextContent {
+  type: 'RichText'
+  data: {
+    plain: string
+    html: string
+  }
+}
+
+/** Image content */
+export interface ImageContent {
+  type: 'Image'
+  data: {
+    base64: string
+    width: number
+    height: number
+  }
+}
+
+/** Union of all content types */
+export type ClipboardContent = TextContent | RichTextContent | ImageContent
+
+/** A single clipboard history item */
+export interface ClipboardItem {
+  id: string
+  content: ClipboardContent
+  timestamp: string
+  pinned: boolean
+  preview: string
+}
+
+/** Active tab in the UI */
+export type ActiveTab = 'clipboard' | 'gifs' | 'emoji' | 'kaomoji' | 'symbols'
+
+/** Theme mode */
+export type ThemeMode = 'light' | 'dark' | 'system'
+
+/** Color scheme from XDG Desktop Portal */
+export type ColorScheme = 'nopreference' | 'dark' | 'light'
+
+/** System theme information from the backend */
+export interface ThemeInfo {
+  color_scheme: ColorScheme
+  prefers_dark: boolean
+  source: string
+}
+
+export interface Kaomoji {
+  id: string
+  text: string
+  category: string
+  keywords: string[]
+}
+
+export type CustomKaomoji = Omit<Kaomoji, 'id'>
+
+export interface UserSettings {
+  theme_mode: ThemeMode
+  dark_background_opacity: number
+  light_background_opacity: number
+  enable_smart_actions: boolean
+  enable_ui_polish: boolean
+  enable_dynamic_tray_icon: boolean
+  max_history_size: number
+  auto_delete_interval: number
+  auto_delete_unit: 'minutes' | 'hours' | 'days' | 'weeks'
+  custom_kaomojis: CustomKaomoji[]
+  ui_scale: number
+}
+
+/** Helper type for boolean settings keys */
+export type BooleanSettingKey = {
+  [K in keyof UserSettings]: UserSettings[K] extends boolean ? K : never
+}[keyof UserSettings]
+
+/** Rendering environment flags from the backend (NVIDIA / AppImage detection) */
+export interface RenderingEnv {
+  /** true when an NVIDIA GPU is detected */
+  is_nvidia: boolean
+  /** true when running from an AppImage */
+  is_appimage: boolean
+  /** true when transparency & rounded corners must be disabled */
+  transparency_disabled: boolean
+  /** Human-readable reason shown in Settings UI */
+  reason: string
+}

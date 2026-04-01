@@ -1,0 +1,107 @@
+{
+  "projectName": "Windows-11-Clipboard-History-For-Linux",
+  "projectOwner": "gustavosett",
+  "repoType": "github",
+  "repoHost": "https://github.com/gustavosett/Windows-11-Clipboard-History-For-Linux",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "freshCoder21313",
+      "name": "freshCoder21313",
+      "avatar_url": "https://avatars.githubusercontent.com/u/151538542?v=4",
+      "profile": "https://github.com/freshCoder21313",
+      "contributions": [
+        "data",
+        "code",
+        "design"
+      ]
+    },
+    {
+      "login": "Tallin-Boston-Technology",
+      "name": "Tallin-Boston-Technology",
+      "avatar_url": "https://avatars.githubusercontent.com/u/247321893?v=4",
+      "profile": "https://github.com/Tallin-Boston-Technology",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "rorar",
+      "name": "rorar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44790144?v=4",
+      "profile": "https://github.com/rorar",
+      "contributions": [
+        "ideas",
+        "bug"
+      ]
+    },
+    {
+      "login": "sosadsonar",
+      "name": "sonarx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/120033042?v=4",
+      "profile": "https://github.com/sosadsonar",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "olksndrdevhub",
+      "name": "Oleksandr Romaniuk",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47930925?v=4",
+      "profile": "https://oleksandrdev.com/",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "Predrag",
+      "name": "Predrag",
+      "avatar_url": "https://avatars.githubusercontent.com/u/460694?v=4",
+      "profile": "https://github.com/Predrag",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "henmalib",
+      "name": "Hen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68553709?v=4",
+      "profile": "https://github.com/henmalib",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "e6ad2020",
+      "name": "Eyad",
+      "avatar_url": "https://avatars.githubusercontent.com/u/119390190?v=4",
+      "profile": "https://github.com/e6ad2020",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "kinou-p",
+      "name": "Kinou",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69145792?v=4",
+      "profile": "https://alexandre-pommier.com",
+      "contributions": [
+        "bug",
+        "code",
+        "question",
+        "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true,
+  "commitType": "docs"
+}
